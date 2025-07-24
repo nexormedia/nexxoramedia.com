@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexora Media - وكالة التسويق الرقمي</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ff6b6b;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="a" cx="50%" cy="50%"><stop offset="0%" stop-color="%23ff6b6b" stop-opacity="0.1"/><stop offset="100%" stop-color="%234ecdc4" stop-opacity="0.05"/></radialGradient></defs><circle cx="200" cy="200" r="100" fill="url(%23a)"/><circle cx="800" cy="300" r="150" fill="url(%23a)"/><circle cx="400" cy="700" r="120" fill="url(%23a)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 800px;
+            padding: 2rem;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: slideInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: slideInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: slideInUp 1s ease 0.4s both;
+            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 107, 0.4);
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 5%;
+            background: white;
+            position: relative;
+        }
+
+        .services::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            clip-path: polygon(0 0, 100% 0, 100% 70%, 0 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 3rem;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #ff6b6b;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #333;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 1.5rem;
+        }
+
+        .stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            height: auto;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            border: 2px solid transparent;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #ff6b6b33;
+        }
+
+        .portfolio-content {
+            position: static;
+            color: #333;
+            transform: none;
+            padding: 0;
+            transition: none;
+        }
+
+        .portfolio-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .portfolio-content p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .portfolio-stat {
+            text-align: center;
+        }
+
+        .portfolio-stat-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4ecdc4;
+        }
+
+        .portfolio-stat-label {
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 20px;
+            backdrop-filter: blur(20px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            margin-left: 1rem;
+            color: #4ecdc4;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #ff6b6b;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                justify-content: center;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">Nexora Media</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Nexora Media</h1>
+            <p>Transforming your digital vision into stunning reality in the health & beauty industry</p>
+            <p>A specialized digital marketing agency focused on building brands and managing digital communities</p>
+            <a href="#contact" class="cta-button">Start Your Project Now</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Our Premium Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <i class="fas fa-share-alt service-icon"></i>
+                    <h3>Social Media Management</h3>
+                    <p>Building and executing innovative strategies to grow your digital presence and increase engagement with your target audience in the health & beauty sector</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-bullhorn service-icon"></i>
+                    <h3>Paid Advertising</h3>
+                    <p>Targeted and optimized advertising campaigns to achieve the best return on investment across all social media platforms</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-shopping-cart service-icon"></i>
+                    <h3>Content Marketing</h3>
+                    <p>Creating engaging and valuable content that tells your brand's story and converts followers into loyal customers</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-palette service-icon"></i>
+                    <h3>Design & Brand Identity Services</h3>
+                    <p>Designing comprehensive and attractive visual identity that reflects your brand values in the health & beauty industry</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-users service-icon"></i>
+                    <h3>Digital Community Building</h3>
+                    <p>Creating and managing active and interactive digital communities around your brand to build loyalty and trust</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-chart-line service-icon"></i>
+                    <h3>Analytics & Reporting</h3>
+                    <p>Comprehensive performance analysis and detailed reports to measure your marketing campaign success and continuously improve them</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>About Us</h2>
+                    <p>We are Nexora Media, a digital marketing agency specialized in the health & beauty sector. We combine creativity and strategy to create exceptional digital experiences.</p>
+                    <p>Our specialized team understands the challenges and opportunities in the health & beauty market, and we work with you to build a strong and impactful digital presence that achieves your business goals.</p>
+                    <p>We believe in the power of compelling stories and authentic content in building long-term relationships with your customers.</p>
+                </div>
+                <div class="stats fade-in">
+                    <div class="stat">
+                        <div class="stat-number">80+</div>
+                        <div class="stat-label">Successful Projects</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">Happy Clients</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">2+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <h2 class="section-title">Our Work Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-content">
+                        <h3>🏥 Luxury Beauty Clinic</h3>
+                        <p><strong>Project:</strong> Complete social media transformation for a premium beauty clinic specializing in cosmetic procedures and skincare treatments.</p>
+                        <p><strong>Services:</strong> Social media management, content creation, paid advertising, appointment booking system integration.</p>
+                        <p><strong>Results:</strong> Increased online bookings by 200%, grew Instagram followers from 2K to 15K in 6 months, generated $150K+ in revenue.</p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">200%</div>
+                                <div class="portfolio-stat-label">Booking Increase</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">15K</div>
+                                <div class="portfolio-stat-label">New Followers</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">$150K+</div>
+                                <div class="portfolio-stat-label">Revenue Generated</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-content">
+                        <h3>💄 Cosmetics Brand Store</h3>
+                        <p><strong>Project:</strong> Digital marketing strategy for an organic cosmetics brand targeting health-conscious millennials and Gen-Z consumers.</p>
+                        <p><strong>Services:</strong> Content marketing, influencer partnerships, brand storytelling, e-commerce optimization.</p>
+                        <p><strong>Results:</strong> Achieved 300% increase in online sales, built community of 25K+ engaged followers, launched 3 viral campaigns.</p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">300%</div>
+                                <div class="portfolio-stat-label">Sales Growth</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">25K+</div>
+                                <div class="portfolio-stat-label">Community Size</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">3</div>
+                                <div class="portfolio-stat-label">Viral Campaigns</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-content">
+                        <h3>💪 Fitness & Wellness Center</h3>
+                        <p><strong>Project:</strong> Digital transformation for a premium fitness center offering personal training, group classes, and wellness programs.</p>
+                        <p><strong>Services:</strong> Community building, workout content creation, member engagement campaigns, digital challenges.</p>
+                        <p><strong>Results:</strong> Built active community of 8K+ members, increased monthly memberships by 150%, launched successful 30-day challenge.</p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">150%</div>
+                                <div class="portfolio-stat-label">Membership Growth</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">8K+</div>
+                                <div class="portfolio-stat-label">Active Members</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">30</div>
+                                <div class="portfolio-stat-label">Day Challenge</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-content">
+                        <h3>🧴 Skincare Product Line</h3>
+                        <p><strong>Project:</strong> Complete brand launch for a new organic skincare line targeting sensitive skin solutions and natural beauty enthusiasts.</p>
+                        <p><strong>Services:</strong> Brand identity design, digital launch campaign, influencer collaborations, content strategy.</p>
+                        <p><strong>Results:</strong> Achieved 1M+ campaign impressions, sold out first product batch in 2 weeks, established brand recognition.</p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">1M+</div>
+                                <div class="portfolio-stat-label">Impressions</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">2</div>
+                                <div class="portfolio-stat-label">Weeks Sellout</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">100%</div>
+                                <div class="portfolio-stat-label">Brand Recognition</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-content">
+                        <h3>💊 Wellness Supplement Brand</h3>
+                        <p><strong>Project:</strong> Comprehensive marketing strategy for a health supplement company focusing on fitness enthusiasts and wellness seekers.</p>
+                        <p><strong>Services:</strong> Influencer marketing, educational content, testimonial campaigns, community building.</p>
+                        <p><strong>Results:</strong> Generated $500K+ in revenue, partnered with 50+ fitness influencers, built loyal customer base of 12K+.</p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">$500K+</div>
+                                <div class="portfolio-stat-label">Revenue</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">50+</div>
+                                <div class="portfolio-stat-label">Influencers</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">12K+</div>
+                                <div class="portfolio-stat-label">Customers</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-item fade-in">
+                    <div class="portfolio-content">
+                        <h3>💇‍♀️ Hair Salon Chain</h3>
+                        <p><strong>Project:</strong> Multi-location social media management for a premium hair salon chain offering cutting, coloring, and styling services.</p>
+                        <p><strong>Services:</strong> Location-specific content, booking system integration, customer testimonials, before/after showcases.</p>
+                        <p><strong>Results:</strong> Achieved 400% growth in online bookings, increased customer retention by 80%, expanded to 2 new locations.</p>
+                        <div class="portfolio-stats">
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">400%</div>
+                                <div class="portfolio-stat-label">Booking Growth</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">80%</div>
+                                <div class="portfolio-stat-label">Retention Rate</div>
+                            </div>
+                            <div class="portfolio-stat">
+                                <div class="portfolio-stat-number">2</div>
+                                <div class="portfolio-stat-label">New Locations</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title" style="color: white;">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info fade-in">
+                    <h3>Let's Transform Your Vision Into Reality</h3>
+                    <p>We're here to help you build a strong and impactful digital presence. Contact us today and start your journey toward digital success.</p>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>contact11.nexoramedia@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+213 XXX XXX XXX</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <span>Serving Clients Worldwide</span>
+                    </div>
+                </div>
+                <form class="contact-form fade-in" action="https://formspree.io/f/meozankw" method="POST">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="Your email address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your phone number">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea id="message" name="message" rows="4" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p>&copy; 2025 Nexora Media. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Header background change on scroll
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            // Let the form submit naturally to Formspree
+            // Show thank you message after a brief delay
+            setTimeout(() => {
+                alert('Thank you for contacting us! We will get back to you as soon as possible.');
+            }, 100);
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) rotate(1deg)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) rotate(0deg)';
+            });
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+    </script>
+</body>
+</html>
